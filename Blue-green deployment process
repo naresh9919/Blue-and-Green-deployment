@@ -1,0 +1,65 @@
+ # write blue.yaml file
+
+-> kubectl apply -f blue.yml
+  
+   It will create blue deployment
+
+-> kubectl get all
+
+  You can see the replicas and port numbers. With that port number u can access on web
+  It will show the blue environment
+
+
+# write green.yml file
+
+-> green.yaml
+
+-> kubectl apply -f green.yml
+ 
+   It will create green deployment
+
+-> kubectl get all
+
+   It will show the replicas and port numbers
+   U can access it in website
+   It will show the green environment
+
+
+#### For deployment
+
+Go to green.yml and change 
+
+-> labels :
+   Name : green-deployment (to) blue-deployment
+And
+
+  Match label : green-deployment (to) blue-deployment
+-> :wq!
+
+### go to blue.yaml
+
+Selector : 
+Name : blue-deployment (to) green-deployment
+
+:Wq! 
+
+-> kubectl apply -f green.yml
+
+It will change from blue environment to green environment
+
+-> kubectl get pods
+
+
+
+If there is a problem in green deployment, then we need to ROLEBACK for that
+
+## go to the blue.yml
+
+Selector:
+Name : green-deployment to blue-deployment
+
+Just change the name 
+
+#-> kubectl apply -f blue.yml
+
+It will switch from green environment to blue environment 
