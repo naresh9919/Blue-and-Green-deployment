@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: green-deployment
   spec :
-   replies:2
+   replies: 2
    selector :
    match labels :
       name : green-deployment
