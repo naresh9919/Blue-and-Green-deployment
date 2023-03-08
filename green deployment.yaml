@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-deployment
+  spec :
+   replies:2
+   selector :
+   match labels :
+      name : green-deployment
+   template:
+   metadata :
+   labels :
+    name : green-deployment
+   spec :
+   containers :
+   - name : green-deployment
+     image : adamtravis/rollouts: green
+     ports :
+     - name : http
+       continer port : 8080 
+       protocal : TCP 
+---
+apiVersion : v1
+kind : service
+ metadata :
+   name : green-deployment 
+ labels : 
+  name : green-deployment 
+  spec : 
+  - port : 80 
+  target port : http
+  protocol : TCP 
+ selector : green-deployment 
+ type : node port 
